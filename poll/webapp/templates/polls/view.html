@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <section class="py-5 text-center container">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Просмотр опроса №{{ poll.id }}</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="row">
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Опрос #{{ poll.id }} Количество ответов 0</h5>
+                    <p class="card-text">Вопрос: {{ poll.question }}</p>
+                    <div>
+                        <a href="{% url 'polls_update' poll.id %}" class="btn btn-success btn-sm">Изменить</a>
+                        <a href="{% url 'polls_delete' poll.id %}" class="btn btn-danger btn-sm">Удалить</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'polls_choice_create' poll.pk %}" class="btn btn-outline-success btn-sm">Добавить вариант</a>
+            <a href="{% url 'polls_take' poll.pk %}" class="btn btn-outline-primary btn-sm">Пройти опрос</a>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        {% for choice in choices %}
+            <div class="col">
+                <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Вариант №{{ choice.id }}</div>
+                    <div class="card-body">
+                        <ul>
+                            <li class="text-secondary">
+                                <span><strong><small>Ответ</small>:</strong> {{ choice.text }}</span>
+                            </li>
+                            <li class="text-secondary">
+                                <span><strong><small>Ответили</small>:</strong> {{ choice.answers.count }} раз 0%</span>
+                            </li>
+                        </ul>
+                        <hr>
+                        <a href="{% url 'polls_choice_update' choice.id %}" class="btn btn-outline-success btn-sm">Изменить</a>
+                        <a href="{% url 'polls_choice_delete' choice.id %}" class="btn btn-outline-danger btn-sm">Удалить</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

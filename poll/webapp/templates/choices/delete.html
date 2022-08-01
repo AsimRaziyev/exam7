@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block title %}Удалить вариант{% endblock %}
+
+{% block content %}
+    <section class="py-5 text-center container">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Удаление варианта</h1>
+            </div>
+        </div>
+    </section>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <h5>Вы уверены что хотите удалить вариант: [{{ choice.text }}]?</h5>
+        <button class="btn btn-danger" type="submit">Да</button>
+        <a class="btn btn-primary" href="{% url 'polls_view' choice.poll.pk %}">Нет</a>
+    </form>
+{% endblock %}

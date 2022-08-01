@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% load request_get_replace_page %}
+{% block content %}
+    <section class="py-5 text-center container">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Опросы</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="row">
+        {% for poll in polls %}
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Вопрос №{{ forloop.counter }}</h5>
+                        <p class="card-text">Вопрос: {{ poll.question }}</p>
+
+                        <a href="{% url 'polls_view' poll.pk %}" class="btn btn-outline-primary btn-sm">Подробнее</a>
+                        <a href="{% url 'polls_take' poll.pk %}" class="btn btn-outline-primary btn-sm">Пройти опрос</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="sort mt-5">
+                {% if is_paginated %}
+                    {% include "partials/pagination.html" %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

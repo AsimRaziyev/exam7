@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block title %}Добавить вариант{% endblock %}
+
+{% block content %}
+    <section class="py-5 text-center container">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Добавление варианта</h1>
+            </div>
+        </div>
+    </section>
+
+    <form action="" method="post">
+        {% include "partials/form.html" with button_text="Добавить" %}
+    </form><br/>
+{% endblock %}
