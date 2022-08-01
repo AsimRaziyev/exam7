@@ -13,7 +13,8 @@
         <div class="col mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Опрос #{{ poll.id }} Количество ответов 0</h5>
+                    <h5 class="card-title">Опрос №{{ poll.id }} Количество ответов 0</h5>
+
                     <p class="card-text">Вопрос: {{ poll.question }}</p>
                     <div>
                         <a href="{% url 'polls_update' poll.id %}" class="btn btn-success btn-sm">Изменить</a>
@@ -21,7 +22,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
